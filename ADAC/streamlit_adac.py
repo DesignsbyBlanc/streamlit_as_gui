@@ -86,6 +86,7 @@ with st.form("my_form",clear_on_submit=True):
             <code>
                 Remove-ADObject -Confirm:`$false -Identity:'CN={USER_FNAME} {USER_LNAME},{AD_PATH}' -Recursive:`$true -Server:'{AD_SERVER}.{AD_DOMAIN}'
             </code>
+
         </div>
         "
 
@@ -107,7 +108,7 @@ with st.form("my_form",clear_on_submit=True):
 """
         PS_EMAIL_SPLAT_SUF = "}"
         PS_EMAIL_CMD = "\n\nSend-MailMessage @sendMailMessageSplat"
-        PS_SPLAT_EMAIL =PS_EMAIL_VARS + PS_EMAIL_SPLAT_PRE.strip() + PS_EMAIL_SPLAT_OBJ + PS_EMAIL_SPLAT_SUF.strip() + PS_EMAIL_CMD
+        PS_SPLAT_EMAIL = PS_EMAIL_VARS + PS_EMAIL_SPLAT_PRE.strip() + PS_EMAIL_SPLAT_OBJ + PS_EMAIL_SPLAT_SUF.strip() + PS_EMAIL_CMD
         # print(PS_SPLAT_EMAIL)
         process = subprocess.Popen(["powershell", PS_SPLAT_EMAIL], stdout=subprocess.PIPE)
         result = process.communicate()[0]
